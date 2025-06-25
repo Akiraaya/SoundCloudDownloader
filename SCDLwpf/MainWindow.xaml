@@ -73,9 +73,9 @@
                 </TextBox.Resources>
             </TextBox>
             <TextBlock x:Name="WatermarkTextClientIdTextBox" Text="Client ID" FontFamily="Arial" Foreground="Gray" Margin="30,50,0,0" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" IsEnabled="false" Grid.Row="1"/>
-            <CheckBox x:Name="clientIdCheckBox" VerticalContentAlignment="Center" FontFamily="Arial" Content="Use custom Client ID" Grid.Row="2" Grid.ColumnSpan="1" Margin="20,15,0,50" IsChecked="False" Checked="clientIdCheckBox_CheckedChanged" Unchecked="clientIdCheckBox_CheckedChanged" Height="20" Foreground="White"/>
-            <Image Height="25" Width="25" Grid.Row="2" Grid.Column="2" Source="/assets/img/download_icon.png" Margin="20,0,95,41" ></Image>
-            
+            <CheckBox x:Name="clientIdCheckBox" VerticalContentAlignment="Center" Padding="0,1,0,0" FontFamily="Arial" Content="Use custom Client ID" Grid.Row="2" Grid.ColumnSpan="1" Margin="20,15,0,50" IsChecked="False" Checked="clientIdCheckBox_CheckedChanged" Unchecked="clientIdCheckBox_CheckedChanged" Height="20" Foreground="White"/>
+            <Image Height="30" Width="30" Grid.Row="2" Grid.Column="2" Source="/assets/img/download_icon.png" Margin="20,0,95,41" ></Image>
+
             <Button x:Name="downloadBtn" Content="      Download" FontSize="15" FontFamily="Arial" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Margin="20,0,20,40" Height="30" Background="Transparent" Click="downloadBtn_Click" Foreground="White" BorderThickness="0.5" BorderBrush="White" VerticalContentAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -110,8 +110,8 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
-                
-                
+
+
                 <Border x:Name="SongMainWindowBorder" Margin="10,10,10,10" Background="#121212" CornerRadius="5" Grid.RowSpan="2" Opacity="0.5">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
@@ -201,6 +201,12 @@
                     </Image.Clip>
                 </Image>
             </Border>
+            <TextBlock Text="Language:" FontFamily="Arial" FontSize="20" Foreground="White" Margin="20,57,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
+            <ComboBox Height="20" Margin="20,87,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
+                <ComboBoxItem>English</ComboBoxItem>
+                <ComboBoxItem>Русский</ComboBoxItem>
+                <ComboBoxItem>Українська</ComboBoxItem>
+            </ComboBox>
         </Grid>
 
     </Grid>

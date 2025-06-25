@@ -1,0 +1,1 @@
+--Auto parse client_id from SoundCloud, and check if authorization is failed or response is null then use default client_id
