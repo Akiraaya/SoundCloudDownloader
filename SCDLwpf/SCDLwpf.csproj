@@ -9,7 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\img\download_icon.png" />
+    <None Remove="assets\img\folder_img.png" />
     <None Remove="assets\img\lg.png" />
+    <None Remove="assets\img\miku_icon.png" />
+    <None Remove="assets\img\music-icon.png" />
+    <None Remove="assets\img\settings.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,9 +23,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\img\download_icon.png" />
+    <Resource Include="assets\img\folder_img.png" />
     <Resource Include="assets\img\lg.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="assets\img\miku_icon.png" />
+    <Resource Include="assets\img\music-icon.png" />
+    <Resource Include="assets\img\settings.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,6 +15,7 @@ using TagLib;
 using Microsoft.Win32;
 using System.Data;
 using System.Windows.Media.Animation;
+using System.Diagnostics;
 
 namespace SCDLwpf;
 
@@ -105,7 +106,7 @@ public partial class MainWindow : Window
         }
         else
         {
-            _download.ClientId = "7mhpzWdpFu1L9XtgaTBA1uyuuo0n3t33";
+            _download.ClientId = "3sN94fvc9AjpzCe1QvVlD3mFwKfucCeC";
         }
 
         SoundCloudUrlResolve soundCloudUrlResolve = new SoundCloudUrlResolve(_download);
@@ -234,6 +235,18 @@ public partial class MainWindow : Window
         else
         {
             Canvas.SetLeft(textBlock, 0);
+        }
+    }
+
+    private void OpenFolderButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(_download.Path) && Directory.Exists(_download.Path))
+        {
+            Process.Start("explorer.exe", _download.Path);
+        }
+        else
+        {
+            MessageBox.Show("Directory not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
