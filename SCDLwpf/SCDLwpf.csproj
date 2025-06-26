@@ -13,6 +13,7 @@
     <None Remove="assets\img\folder_img.png" />
     <None Remove="assets\img\lg.png" />
     <None Remove="assets\img\miku_icon.png" />
+    <None Remove="assets\img\monkey-music-monkey.gif" />
     <None Remove="assets\img\music-icon.png" />
     <None Remove="assets\img\settings.png" />
     <None Remove="assets\img\skebob_icon.jpg" />
@@ -21,6 +22,7 @@
   <ItemGroup>
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="TagLibSharp" Version="2.3.0" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +32,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="assets\img\miku_icon.png" />
+    <Resource Include="assets\img\monkey-music-monkey.gif" />
     <Resource Include="assets\img\music-icon.png" />
     <Resource Include="assets\img\settings.png" />
     <Resource Include="assets\img\skebob_icon.jpg" />

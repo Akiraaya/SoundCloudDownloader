@@ -35,6 +35,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        SetLanguageComboBoxFromSettings();
         InitializeSCDownloader();
     }
 
@@ -114,9 +115,23 @@ public partial class MainWindow : Window
                 AnimateText(ArtistNameTextBlock, ArtistNameTextBlockCanvas);
             }, DispatcherPriority.Loaded);
 
-            UpdateStatus($"Language changed to {selectedItem.Content}");
+            UpdateStatus($"Language set to {selectedItem.Content}");
         }
     }
+    private void SetLanguageComboBoxFromSettings()
+    {
+        string savedLanguage = Properties.Settings.Default.Language;
+
+        foreach (ComboBoxItem item in LanguageComboBox.Items)
+        {
+            if (item.Tag != null && item.Tag.ToString() == savedLanguage)
+            {
+                LanguageComboBox.SelectedItem = item;
+                break;
+            }
+        }
+    }
+
     private async void downloadBtn_Click(object sender, RoutedEventArgs e)
     {
         string url = linkTextBox.Text.Trim();
