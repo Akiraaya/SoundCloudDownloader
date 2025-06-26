@@ -15,6 +15,7 @@
     <None Remove="assets\img\miku_icon.png" />
     <None Remove="assets\img\music-icon.png" />
     <None Remove="assets\img\settings.png" />
+    <None Remove="assets\img\skebob_icon.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +32,7 @@
     <Resource Include="assets\img\miku_icon.png" />
     <Resource Include="assets\img\music-icon.png" />
     <Resource Include="assets\img\settings.png" />
+    <Resource Include="assets\img\skebob_icon.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +41,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -16,6 +16,10 @@ using Microsoft.Win32;
 using System.Data;
 using System.Windows.Media.Animation;
 using System.Diagnostics;
+using SCDLwpf.Localization;
+using SCDLwpf.Properties;
+using System.Windows.Threading;
+
 
 namespace SCDLwpf;
 
@@ -53,6 +57,7 @@ public partial class MainWindow : Window
 
         UpdateStatus($"Download Path: {_download.Path}");
     }
+
     private void CreateDownloader()
     {
         var resolver = new SoundCloudUrlResolve(_download);
@@ -79,6 +84,39 @@ public partial class MainWindow : Window
 
     }
 
+    private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (LanguageComboBox.SelectedItem is ComboBoxItem selectedItem)
+        {
+            string cultureCode = selectedItem.Tag.ToString();
+
+            LocalizationManager.Instance.SetCulture(cultureCode);
+            Properties.Settings.Default.Language = cultureCode;
+            Properties.Settings.Default.Save();
+            switch (cultureCode)
+            {
+                case "en-US":
+                    downloadBtn.FontSize = 15;
+                    pathBtn.FontSize = 15;
+                    break;
+                case "uk-UA":
+                    downloadBtn.FontSize = 12;
+                    pathBtn.FontSize = 12;
+                    break;
+                case "ru-RU":
+                    downloadBtn.FontSize = 15;
+                    pathBtn.FontSize = 12;
+                    break;
+            }
+            Dispatcher.InvokeAsync(() =>
+            {
+                AnimateText(SongNameTextBlock, SongNameTextBlockCanvas);
+                AnimateText(ArtistNameTextBlock, ArtistNameTextBlockCanvas);
+            }, DispatcherPriority.Loaded);
+
+            UpdateStatus($"Language changed to {selectedItem.Content}");
+        }
+    }
     private async void downloadBtn_Click(object sender, RoutedEventArgs e)
     {
         string url = linkTextBox.Text.Trim();
@@ -156,8 +194,8 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Произошла ошибка при загрузке: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            UpdateStatus($"Ошибка: {ex.Message}");
+            MessageBox.Show($"An error occurred while loading: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            UpdateStatus($"Error: {ex.Message}");
         }
         finally
         {
@@ -171,6 +209,11 @@ public partial class MainWindow : Window
         if (!clientIdCheckBox.IsChecked != true)
         {
             clientIdTextBox.Clear();
+            WatermarkTextClientIdTextBox.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#a9a9a9"));
+        }
+        else
+        {
+            WatermarkTextClientIdTextBox.Foreground = Brushes.Gray;
         }
     }
     private void WatermarkTextLinkTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -196,7 +239,7 @@ public partial class MainWindow : Window
         if (result == true)
         {
             _download.Path = dialog.FolderName;
-            UpdateStatus($"Выбрана новая папка для загрузки: {_download.Path}");
+            UpdateStatus($"New download folder selected: {_download.Path}");
 
             Properties.Settings.Default.DownloadPath = _download.Path;
             Properties.Settings.Default.Save();
@@ -204,6 +247,7 @@ public partial class MainWindow : Window
             CreateDownloader();
         }
     }
+
     public void AnimateText(TextBlock textBlock, Canvas parentCanvas, double durationSeconds = 5)
     {
         if (textBlock == null || parentCanvas == null)

@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCDLwpf"
+        xmlns:loc="clr-namespace:SCDLwpf.Localization"
         mc:Ignorable="d" ResizeMode="NoResize"
+        Icon="/assets/img/skebob_icon.jpg"
         Title="SoundCloudDownloader" Height="450" Width="800">
+    <Window.DataContext>
+        <Binding Source="{x:Static loc:LocalizationManager.Instance}" />
+    </Window.DataContext>
     <Grid Background="Black" >
         <Grid.RowDefinitions>
 
@@ -57,42 +62,44 @@
                     </Image.Clip>
                 </Image>
             </Border>
-            <TextBox x:Name="linkTextBox" Background="#1f1f1f" VerticalContentAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,0,20,50" Padding="8,0,0,0" Height="30" ToolTip="Song URL" TextChanged="WatermarkTextLinkTextBox_TextChanged" BorderThickness="0" Foreground="White" d:IsLocked="True">
+            <TextBox x:Name="linkTextBox" Background="#1f1f1f" VerticalContentAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,0,20,50" Padding="8,0,0,0" Height="30" ToolTip="Song URL" TextChanged="WatermarkTextLinkTextBox_TextChanged" BorderThickness="0" Foreground="LightGray">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBlock x:Name="WatermarkTextLinkTextBox" Text="Song URL" FontFamily="Arial" Foreground="#a9a9a9" Margin="30,0,0,50" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" Grid.Row="1"/>
-            <TextBox x:Name="clientIdTextBox" Background="#1f1f1f" Grid.Row="1" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="20,50,20,0" Padding="8,0,0,0" Height="30" IsEnabled="false" ToolTip="Client ID" TextChanged="WatermarkTextClientIdTextBox_TextChanged" BorderThickness="0" Foreground="White">
+            <TextBlock x:Name="WatermarkTextLinkTextBox" Text="{Binding SongURL}" FontFamily="Arial" Foreground="#a9a9a9" Margin="30,0,0,50" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" Grid.Row="1"/>
+            <TextBox x:Name="clientIdTextBox" Background="#1f1f1f" Grid.Row="1" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="20,50,20,0" Padding="8,0,0,0" Height="30" IsEnabled="false" ToolTip="Client ID" TextChanged="WatermarkTextClientIdTextBox_TextChanged" BorderThickness="0" Foreground="LightGray">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBlock x:Name="WatermarkTextClientIdTextBox" Text="Client ID" FontFamily="Arial" Foreground="Gray" Margin="30,50,0,0" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" IsEnabled="false" Grid.Row="1"/>
-            <CheckBox x:Name="clientIdCheckBox" VerticalContentAlignment="Center" Padding="0,1,0,0" FontFamily="Arial" Content="Use custom Client ID" Grid.Row="2" Grid.ColumnSpan="1" Margin="20,15,0,50" IsChecked="False" Checked="clientIdCheckBox_CheckedChanged" Unchecked="clientIdCheckBox_CheckedChanged" Height="20" Foreground="White"/>
-            <Image Height="30" Width="30" Grid.Row="2" Grid.Column="2" Source="/assets/img/download_icon.png" Margin="20,0,95,41" ></Image>
+            <TextBlock x:Name="WatermarkTextClientIdTextBox" Text="{Binding ClientID}" FontFamily="Arial" Foreground="Gray" Margin="30,50,0,0" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" IsEnabled="false" Grid.Row="1"/>
+            <CheckBox x:Name="clientIdCheckBox" VerticalContentAlignment="Center" Padding="0,1,0,0" FontFamily="Arial" Grid.Row="2" Grid.ColumnSpan="1" Margin="19,23,0,0" IsChecked="False" Checked="clientIdCheckBox_CheckedChanged" Unchecked="clientIdCheckBox_CheckedChanged" Height="40" Foreground="White" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" >
+                <TextBlock Text="{Binding UseCustomClientID}" TextWrapping="Wrap" Foreground="LightGray" Margin="5,0,0,0" Width="120"/>
+            </CheckBox>
+            <Image Height="30" Width="30" Grid.Row="2" Grid.Column="2" Source="/assets/img/download_icon.png" Margin="20,0,95,41" Opacity="0.8"></Image>
 
-            <Button x:Name="downloadBtn" Content="      Download" FontSize="15" FontFamily="Arial" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Margin="20,0,20,40" Height="30" Background="Transparent" Click="downloadBtn_Click" Foreground="White" BorderThickness="0.5" BorderBrush="White" VerticalContentAlignment="Center">
+            <Button x:Name="downloadBtn" Content="{Binding Download}" Padding="25,0,0,0" FontSize="15" FontFamily="Arial" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Margin="20,0,20,40" Height="30" Background="Transparent" Click="downloadBtn_Click" Foreground="LightGray" BorderThickness="0.5" BorderBrush="White" VerticalContentAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Image Height="20" Width="20" Grid.Row="2" Grid.Column="2" Source="/assets/img/folder_img.png" Margin="20,40,95,0" ></Image>
-            <Button x:Name="pathBtn" Content="      Select path" FontSize="15" FontFamily="Arial" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Margin="20,40,20,0" Height="30" Background="Transparent" Foreground="White" BorderThickness="0.5" Click="pathBtn_Click" BorderBrush="White" VerticalContentAlignment="Center">
+            <Image Height="20" Width="20" Grid.Row="2" Grid.Column="2" Source="/assets/img/folder_img.png" Margin="20,40,95,0" Opacity="0.8"></Image>
+            <Button x:Name="pathBtn" Content="{Binding SelectPath}" Padding="25,0,0,0" FontSize="15" FontFamily="Arial" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Margin="20,40,20,0" Height="30" Background="Transparent" Foreground="LightGray" BorderThickness="0.5" Click="pathBtn_Click" BorderBrush="White" VerticalContentAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <TextBlock Text="Status:" FontSize="20" Margin="20,0,0,60" FontFamily="Arial" Grid.Row="3" Grid.ColumnSpan="2" Foreground="White" />
-            <RichTextBox x:Name="statusRichTextBox" FontFamily="Arial" FontSize="10" Margin="15,15,25,20" Padding="0,5,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="3" Background="Transparent" Foreground="White" BorderThickness="0" Height="110" IsReadOnly="true">
+            <TextBlock Text="{Binding Status}" FontSize="20" Margin="20,0,0,60" FontFamily="Arial" Grid.Row="3" Grid.ColumnSpan="2" Foreground="LightGray" />
+            <RichTextBox x:Name="statusRichTextBox" FontFamily="Arial" FontSize="10" Margin="15,15,25,20" Padding="0,5,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Row="3" Background="Transparent" Foreground="LightGray" BorderThickness="0" Height="110" IsReadOnly="true">
                 <RichTextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -154,16 +161,16 @@
                         </Image>
                     </Border>
                     <Canvas x:Name="SongNameTextBlockCanvas" Grid.Row="1" ClipToBounds="True" Margin="105,0,10,105" Height="30">
-                        <TextBlock x:Name="SongNameTextBlock" Text="Song Name" FontSize="24" FontFamily="Arial" Foreground="White"/>
+                        <TextBlock x:Name="SongNameTextBlock" Text="{Binding SongName}" FontSize="24" FontFamily="Arial" Foreground="LightGray" />
                     </Canvas>
                     <Canvas x:Name="ArtistNameTextBlockCanvas" Grid.Row="1" ClipToBounds="True" Margin="105,0,10,50" Height="20">
-                        <TextBlock x:Name="ArtistNameTextBlock" Text="Artist" FontSize="10" FontFamily="Arial" Grid.Row="1" Foreground="White"/>
+                        <TextBlock x:Name="ArtistNameTextBlock" Text="{Binding Artist}" FontSize="10" FontFamily="Arial" Grid.Row="1" Foreground="LightGray"/>
                     </Canvas>
                     <Canvas x:Name="AlbumNameTextBlockCanvas" Grid.Row="1" ClipToBounds="True" Margin="105,0,20,20" Height="20">
-                        <TextBlock x:Name="AlbumNameTextBlock" Text="Album" FontSize="10" FontFamily="Arial" Grid.Row="1" Foreground="White"/>
+                        <TextBlock x:Name="AlbumNameTextBlock" Text="{Binding Album}" FontSize="10" FontFamily="Arial" Grid.Row="1" Foreground="LightGray"/>
                     </Canvas>
-                    <TextBlock x:Name="GenreTextBlock" Text="Genre" FontSize="10" FontFamily="Arial" Margin="104,10,20,0" Grid.Row="1" Foreground="White" Height="20" />
-                    <TextBlock x:Name="YearTextBlock" Text="Year" FontSize="10" FontFamily="Arial" Margin="105,40,20,0" Grid.Row="1" Foreground="White" Height="20"/>
+                    <TextBlock x:Name="GenreTextBlock" Text="{Binding Genre}" FontSize="10" FontFamily="Arial" Margin="105,10,20,0" Grid.Row="1" Foreground="LightGray" Height="20" />
+                    <TextBlock x:Name="YearTextBlock" Text="{Binding Year}" FontSize="10" FontFamily="Arial" Margin="105,40,20,0" Grid.Row="1" Foreground="LightGray" Height="20"/>
                 </Grid>
                 <Grid Grid.Row="2" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -201,11 +208,16 @@
                     </Image.Clip>
                 </Image>
             </Border>
-            <TextBlock Text="Language:" FontFamily="Arial" FontSize="20" Foreground="White" Margin="20,57,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
-            <ComboBox Height="20" Margin="20,87,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
-                <ComboBoxItem>English</ComboBoxItem>
-                <ComboBoxItem>Русский</ComboBoxItem>
-                <ComboBoxItem>Українська</ComboBoxItem>
+            <TextBlock Text="{Binding Language}" FontFamily="Arial" FontSize="20" Foreground="LightGray" Margin="20,57,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
+            <ComboBox x:Name="LanguageComboBox" Height="25" Margin="20,87,0,0" FontFamily="Arial" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" SelectionChanged="LanguageComboBox_SelectionChanged" BorderThickness="0" Opacity="0.7">
+                <ComboBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </ComboBox.Resources>
+                <ComboBoxItem Content="Enlish" Tag="en-US"/>
+                <ComboBoxItem Content="Українська" Tag="uk-UA"/>
+                <ComboBoxItem Content="Русский" Tag="ru-RU"/>
             </ComboBox>
         </Grid>
 
