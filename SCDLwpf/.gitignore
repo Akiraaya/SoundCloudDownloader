@@ -2,3 +2,8 @@
 bin/
 obj/
 *.user
+*.suo
+*.cache
+*.log
+packages/
+.vs/
