@@ -1,10 +1,10 @@
 ## SoundCloud Downloader
 A simple open-sourse desktop application that allows users to download tracks from SoundCloud by URL.
 
-Automatic metadata tagging (title, artist, genre, year, cover)
-Customizable download folder
-Language selection (English, Ukrainian, Russian)
-Displays cover art and track info after download
+- Automatic metadata tagging (title, artist, genre, year, cover)
+- Customizable download folder
+- Language selection (English, Ukrainian, Russian)
+- Displays cover art and track info after download
 
 ##  How to get your SoundCloud Client ID
 
