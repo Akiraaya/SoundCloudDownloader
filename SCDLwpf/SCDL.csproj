@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>LOGO_ICON.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
     <None Remove="assets\img\music-icon.png" />
     <None Remove="assets\img\settings.png" />
     <None Remove="assets\img\skebob_icon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="LOGO_ICON.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,15 +18,18 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="https://i.pinimg.com/736x/e1/2e/26/e12e26ce14c774758777214827e3d3bf.jpg" Stretch="Fill" Grid.ColumnSpan="3">
+        <Image Source="https://i.pinimg.com/736x/25/aa/1a/25aa1a16b78d63f639b04b8427d4f2d6.jpg" Stretch="Fill" Grid.ColumnSpan="3">
             <Image.Effect>
                 <BlurEffect Radius="20" KernelType="Gaussian"/>
             </Image.Effect>
         </Image>
         <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="110,10,0,10" Height="330" Width="360" Opacity="0.7">
+            <Border.Effect>
+                <BlurEffect Radius="5" KernelType="Gaussian"/>
+            </Border.Effect>
             <Image x:Name="Miku_Logo" Stretch="Fill" Source="/assets/img/miku_icon.png">
                 <Image.Effect>
-                    <BlurEffect Radius="5" KernelType="Gaussian"/>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="270" Color="Black" Opacity="1" />
                 </Image.Effect>
             </Image>
         </Border>
@@ -180,7 +183,7 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
-                <Border Margin="10,10,10,10" Background="#1f1f1f" CornerRadius="5" Opacity="0.5">
+                <Border Margin="10,10,10,10" Background="#1f1f1f" CornerRadius="5" Opacity="0.7">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
                     </Border.Effect>
