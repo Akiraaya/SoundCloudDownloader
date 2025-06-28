@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="https://i.pinimg.com/736x/25/aa/1a/25aa1a16b78d63f639b04b8427d4f2d6.jpg" Stretch="Fill" Grid.ColumnSpan="3">
+        <Image Source="/assets/img/background.jpg" Stretch="Fill" Grid.ColumnSpan="3">
             <Image.Effect>
                 <BlurEffect Radius="20" KernelType="Gaussian"/>
             </Image.Effect>
