@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SCDLwpf.Interfaces;
-using SCDLwpf.Models;
+using SCDL.Interfaces;
+using SCDL.Models;
 using System.Net.Http;
 using System.IO;
 
-namespace SCDLwpf.Services
+namespace SCDL.Services
 {
     public class SoundCloudDownloader : IAudioDownloader
     {

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 using System.Threading;
-using SCDLwpf.Properties;
+using SCDL.Properties;
 
-namespace SCDLwpf.Localization
+namespace SCDL.Localization
 {
     public class LocalizationManager : INotifyPropertyChanged
     {

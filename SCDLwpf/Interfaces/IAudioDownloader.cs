@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SCDLwpf.Models;
+using SCDL.Models;
 
-namespace SCDLwpf.Interfaces
+namespace SCDL.Interfaces
 {
     public interface IAudioDownloader
     {

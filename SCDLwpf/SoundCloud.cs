@@ -4,12 +4,12 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TagLib;
-using SCDLwpf.Models;
+using SCDL.Models;
 using System.Runtime.InteropServices;
-using SCDLwpf.Services;
-using SCDLwpf.Interfaces;
+using SCDL.Services;
+using SCDL.Interfaces;
 
-namespace SCDLwpf
+namespace SCDL
 {
     public class SoundCloud
     {

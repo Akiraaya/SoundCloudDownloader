@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TagLib;
-using SCDLwpf.Models;
-using SCDLwpf.Interfaces;
+using SCDL.Models;
+using SCDL.Interfaces;
 using System.Net.Http;
 
-namespace SCDLwpf.Services
+namespace SCDL.Services
 {
     public class SoundCloudMetadataWriter : IMetadataWriter
     {

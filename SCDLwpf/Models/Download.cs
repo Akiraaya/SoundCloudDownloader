@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCDLwpf.Models
+namespace SCDL.Models
 {
     public class Download
     {
         public string Path { get; set; } = "";
-        public string ClientId { get; set; } = "7mhpzWdpFu1L9XtgaTBA1uyuuo0n3t33";
+        public string ClientId { get; set; } = "";
     }
 }

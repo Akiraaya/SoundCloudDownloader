@@ -3,11 +3,11 @@ using System.Data;
 using System.Windows;
 using System.Globalization;
 using System.Threading;
-using SCDLwpf.Properties;
-using SCDLwpf.Localization;
+using SCDL.Properties;
+using SCDL.Localization;
 
 
-namespace SCDLwpf;
+namespace SCDL;
 
 /// <summary>
 /// Interaction logic for App.xaml

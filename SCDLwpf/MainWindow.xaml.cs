@@ -9,19 +9,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SCDLwpf.Models;
-using SCDLwpf.Services;
+using SCDL.Models;
+using SCDL.Services;
 using TagLib;
 using Microsoft.Win32;
 using System.Data;
 using System.Windows.Media.Animation;
 using System.Diagnostics;
-using SCDLwpf.Localization;
-using SCDLwpf.Properties;
+using SCDL.Localization;
+using SCDL.Properties;
 using System.Windows.Threading;
+using System.Net.Http;
+using System;
 
 
-namespace SCDLwpf;
+namespace SCDL;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -35,6 +37,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = LocalizationManager.Instance;
         SetLanguageComboBoxFromSettings();
         InitializeSCDownloader();
     }
@@ -89,7 +92,7 @@ public partial class MainWindow : Window
     {
         if (LanguageComboBox.SelectedItem is ComboBoxItem selectedItem)
         {
-            string cultureCode = selectedItem.Tag.ToString();
+            string? cultureCode = selectedItem.Tag.ToString();
 
             LocalizationManager.Instance.SetCulture(cultureCode);
             Properties.Settings.Default.Language = cultureCode;
@@ -134,6 +137,12 @@ public partial class MainWindow : Window
 
     private async void downloadBtn_Click(object sender, RoutedEventArgs e)
     {
+        using HttpClient client = new HttpClient();
+        SoundCloudClientIdParse clientIdParser = new SoundCloudClientIdParse(client);
+
+        string? parsedClientId = await clientIdParser.GetClientIdAsync();
+        UpdateStatus($"Client ID parsed successfully: {parsedClientId}");
+
         string url = linkTextBox.Text.Trim();
 
         if (string.IsNullOrWhiteSpace(url))
@@ -159,7 +168,16 @@ public partial class MainWindow : Window
         }
         else
         {
-            _download.ClientId = "3sN94fvc9AjpzCe1QvVlD3mFwKfucCeC";
+            if (string.IsNullOrEmpty(parsedClientId))
+            {
+                _download.ClientId = "3sN94fvc9AjpzCe1QvVlD3mFwKfucCeC";
+                return;
+            }
+            else
+            {
+                _download.ClientId = parsedClientId;
+            }
+
         }
 
         SoundCloudUrlResolve soundCloudUrlResolve = new SoundCloudUrlResolve(_download);

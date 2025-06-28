@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75 d17.13
+VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCDLwpf", "SCDLwpf\SCDLwpf.csproj", "{E000A90B-620B-4734-8443-32938874B0B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCDL", "SCDLwpf\SCDL.csproj", "{E000A90B-620B-4734-8443-32938874B0B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
