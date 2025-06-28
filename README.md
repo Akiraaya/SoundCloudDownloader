@@ -1,4 +1,4 @@
-## SoundCloud Downloade
+## SoundCloud Downloader
 A simple open-sourse desktop application that allows users to download tracks from SoundCloud by URL.
 
 Automatic metadata tagging (title, artist, genre, year, cover)
