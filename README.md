@@ -8,6 +8,8 @@ A simple open-sourse desktop application that allows users to download tracks fr
 
 ##  How to get your SoundCloud Client ID
 
+**No need since v1.0.1**
+
 If you want to use your own Client ID for higher reliability or rate limits:
 
 1. Open (https://soundcloud.com).
